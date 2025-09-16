@@ -1,9 +1,49 @@
-<h1>Toko Bola Hafiz</h1>
+ <!-- Tidak ada lagi extends 'base.html' dan block content, jadi sekarang main.html berdiri sendiri. Django tidak akan menggunakan layout base.html -->
+  <!-- Gantinya dua html baru yakni create_product dan product_detail.html mengikuti struktur base.html -->
 
+<h1>Toko Bola Hafiz</h1>
 
 <h5>NPM: </h5>
 <p>{{ npm }}</p>
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
+
+<h5>Name:</h5>
+<p>{{ name }}</p>
+
+<h5>Class:</h5>
 <p>{{ class }}</p>
+
+<a href="{% url 'main:create_product' %}"> <!-- Ini ngambil dari create_product html dari urls juga -->
+  <button>+ Add Product</button>
+</a>
+
+<hr>
+
+{% if not product_list %}
+<p>Belum ada data produk pada Toko Bola Hafiz.</p>
+{% else %}
+
+{% for product in product_list %}
+<div>
+  <!-- title → name -->
+  <h2><a href="{% url 'main:show_product' product.id %}">{{ product.name }}</a></h2>
+
+  <p><b>{{ product.get_category_display }}</b>{% if product.is_featured %} | 
+    <b>Featured</b>{% endif %}{% if product.is_product_hot %} | 
+    <b>Hot</b>{% endif %} | <i>{{ product.created_at|date:"d M Y H:i" }}</i> 
+    | Views: {{ product.product_views }}</p>
+
+  {% if product.thumbnail %}
+  <img src="{{ product.thumbnail }}" alt="thumbnail" width="150" height="100">
+  <br />
+  {% endif %}
+
+  <!-- content → description -->
+  <p>{{ product.description|truncatewords:25 }}...</p>
+
+  <p><a href="{% url 'main:show_product' product.id %}"><button>Read More</button></a></p>
+</div>
+
+<hr>
+{% endfor %}
+
+{% endif %}

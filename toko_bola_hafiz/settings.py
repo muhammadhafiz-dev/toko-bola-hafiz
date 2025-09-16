@@ -33,6 +33,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1","muhammad-hafiz43-tokobolahafiz.pbp.cs.ui.ac.id"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://muhammad-hafiz43-tokobolahafiz.pbp.cs.ui.ac.id"
+]
 
 # Application definition
 
@@ -61,7 +64,7 @@ ROOT_URLCONF = 'toko_bola_hafiz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], # Agar base terdeteksi sebagai berkas template
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
