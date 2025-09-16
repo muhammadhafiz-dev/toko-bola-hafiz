@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 
-class Product(models.Model):
+class Product(models.Model): 
     CATEGORY_CHOICES = [
         ('transfer', 'Transfer'),
         ('update', 'Update'),

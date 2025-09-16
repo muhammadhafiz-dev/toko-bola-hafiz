@@ -1,6 +1,7 @@
 from django.test import TestCase, Client
 from .models import Product
 
+#untuk mengetes apakah semua fungsi berjalan lancar
 class MainTest(TestCase):
     def test_main_url_is_exist(self):
         response = Client().get('')
