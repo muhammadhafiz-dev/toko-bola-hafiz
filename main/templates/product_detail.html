@@ -9,6 +9,9 @@
     <b>Hot</b>{% endif %} | <i>{{ product.created_at|date:"d M Y, H:i" }}</i> 
     | Views: {{ product.product_views }}</p>
 
+<!-- tambahin price -->
+<p><b>Price:</b> Rp {{ product.price }}</p>
+
 {% if product.thumbnail %}
 <img src="{{ product.thumbnail }}" alt="Product thumbnail" width="300">
 <br /><br />
