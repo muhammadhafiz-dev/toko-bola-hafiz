@@ -17,6 +17,13 @@
 <br /><br />
 {% endif %}
 
+{% if product.user %}
+    <p>Author: {{ product.user.username }}</p>
+{% else %}
+    <p>Author: Anonymous</p>
+
+{% endif %}
+
 <!-- Ubah dari product.content -> product.description -->
 <p>{{ product.description }}</p>
 
