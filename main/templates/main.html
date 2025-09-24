@@ -1,65 +1,57 @@
- <!-- Tidak ada lagi extends 'base.html' dan block content, jadi sekarang main.html berdiri sendiri. Django tidak akan menggunakan layout base.html -->
-  <!-- Gantinya dua html baru yakni create_product dan product_detail.html mengikuti struktur base.html -->
+{% extends 'base.html' %}
+{% load static %}
 
-<h1>Toko Bola Hafiz</h1>
+{% block meta %}
+<title>Toko Bola Hafiz</title>
+{% endblock meta %}
 
-<h5>NPM: </h5>
-<p>{{ npm }}</p>
+{% block content %}
+{% include 'navbar.html' %}
+<div class="bg-gray-50 w-full pt-16 min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-<h5>Name:</h5>
-<p>{{ name }}</p>
+    <!-- Header Section -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Daftar Produk</h1>
+      <p class="text-gray-600">Temukan produk terbaru di Toko Bola Hafiz</p>
+    </div>
 
-<h5>Class:</h5>
-<p>{{ class }}</p>
+    <!-- Filter Section -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 bg-white rounded-lg border border-gray-200 p-4">
+      <div class="flex space-x-3 mb-4 sm:mb-0">
+        <a href="?" class="{% if request.GET.filter == 'all' or not request.GET.filter  %} bg-green-600 text-white{% else %}bg-white text-gray-700 border border-gray-300{% endif %} px-4 py-2 rounded-md font-medium transition-colors hover:bg-green-600 hover:text-white">
+          All Products
+        </a>
+        <a href="?filter=my" class="{% if request.GET.filter == 'my' %} bg-green-600 text-white{% else %}bg-white text-gray-700 border border-gray-300{% endif %} px-4 py-2 rounded-md font-medium transition-colors hover:bg-green-600 hover:text-white">
+          My Products
+        </a>
+      </div>
+      {% if user.is_authenticated %}
+        <div class="text-sm text-gray-500">
+          Last login: {{ last_login }}
+        </div>
+      {% endif %}
+    </div>
 
-<a href="{% url 'main:create_product' %}"> <!-- Ini ngambil dari create_product html dari urls juga -->
-  <button>Add Product</button>
-</a>
-
-<a href="{% url 'main:logout' %}">
-  <button>Logout</button>
-</a>
-
-<h5>Sesi terakhir login: {{ last_login }}</h5>
-
-<hr>
-
-<a href="?filter=all">
-    <button type="button">All Articles</button>
-</a>
-<a href="?filter=my">
-    <button type="button">My Articles</button>
-</a> 
-
-{% if not product_list %}
-<p>Belum ada data produk pada Toko Bola Hafiz.</p>
-{% else %}
-
-{% for product in product_list %}
-<div>
-  <!-- title → name -->
-  <h2><a href="{% url 'main:show_product' product.id %}">{{ product.name }}</a></h2>
-
-  <p><b>{{ product.get_category_display }}</b>{% if product.is_featured %} | 
-    <b>Featured</b>{% endif %}{% if product.is_product_hot %} | 
-    <b>Hot</b>{% endif %} | <i>{{ product.created_at|date:"d M Y H:i" }}</i> 
-    | Views: {{ product.product_views }}</p>
-
-  <!-- Memunculkan tampilan harga di sini -->
-  <p><b>Price:</b> Rp {{ product.price }}</p>    
-
-  {% if product.thumbnail %}
-  <img src="{{ product.thumbnail }}" alt="thumbnail" width="150" height="100">
-  <br />
-  {% endif %}
-
-  <!-- content → description -->
-  <p>{{ product.description|truncatewords:25 }}...</p>
-
-  <p><a href="{% url 'main:show_product' product.id %}"><button>Read More</button></a></p>
+    <!-- Product Grid -->
+    {% if not product_list %}
+      <div class="bg-white rounded-lg border border-gray-200 p-12 text-center">
+        <div class="w-32 h-32 mx-auto mb-4">
+          <img src="{% static 'image/no-product.png' %}" alt="No product available" class="w-full h-full object-contain">
+        </div>
+        <h3 class="text-lg font-medium text-gray-900 mb-2">Belum ada produk</h3>
+        <p class="text-gray-500 mb-6">Jadilah yang pertama menambahkan produk ke toko ini.</p>
+        <a href="{% url 'main:create_product' %}" class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors">
+          Add Product
+        </a>
+      </div>
+    {% else %}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for product in product_list %}
+          {% include 'card_product.html' with product=product %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
 </div>
-
-<hr>
-{% endfor %}
-
-{% endif %}
+{% endblock content %}

@@ -4,12 +4,12 @@ from django.contrib.auth.models import User
 
 class Product(models.Model): 
     CATEGORY_CHOICES = [
-        ('transfer', 'Transfer'),
-        ('update', 'Update'),
+        ('merchandise', 'Merchandise'),
+        ('ball', 'Ball'),
+        ('shoes', 'Shoes'),
+        ('ticket', 'Ticket'),
+        ('jersey', 'Jersey'),
         ('exclusive', 'Exclusive'),
-        ('match', 'Match'),
-        ('rumor', 'Rumor'),
-        ('analysis', 'Analysis'),
     ]
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
