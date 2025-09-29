@@ -19,10 +19,10 @@
     <!-- Filter Section -->
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 bg-white rounded-lg border border-gray-200 p-4">
       <div class="flex space-x-3 mb-4 sm:mb-0">
-        <a href="?" class="{% if request.GET.filter == 'all' or not request.GET.filter  %} bg-green-600 text-white{% else %}bg-white text-gray-700 border border-gray-300{% endif %} px-4 py-2 rounded-md font-medium transition-colors hover:bg-green-600 hover:text-white">
+        <a href="?" class="{% if request.GET.filter == 'all' or not request.GET.filter  %} bg-yellow-600 text-white{% else %}bg-white text-gray-700 border border-gray-300{% endif %} px-4 py-2 rounded-md font-medium transition-colors hover:bg-yellow-600 hover:text-white">
           All Products
         </a>
-        <a href="?filter=my" class="{% if request.GET.filter == 'my' %} bg-green-600 text-white{% else %}bg-white text-gray-700 border border-gray-300{% endif %} px-4 py-2 rounded-md font-medium transition-colors hover:bg-green-600 hover:text-white">
+        <a href="?filter=my" class="{% if request.GET.filter == 'my' %} bg-yellow-600 text-white{% else %}bg-white text-gray-700 border border-gray-300{% endif %} px-4 py-2 rounded-md font-medium transition-colors hover:bg-yellow-600 hover:text-white">
           My Products
         </a>
       </div>
@@ -41,7 +41,7 @@
         </div>
         <h3 class="text-lg font-medium text-gray-900 mb-2">Belum ada produk</h3>
         <p class="text-gray-500 mb-6">Jadilah yang pertama menambahkan produk ke toko ini.</p>
-        <a href="{% url 'main:create_product' %}" class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors">
+        <a href="{% url 'main:create_product' %}" class="inline-flex items-center px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 transition-colors">
           Add Product
         </a>
       </div>
