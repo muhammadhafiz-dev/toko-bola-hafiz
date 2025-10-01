@@ -21,15 +21,15 @@
 </style>
 
 <nav class="fixed top-0 left-0 w-full bg-yellow-800 border-b border-yellow-700 shadow-lg z-50 font-montserrat navbar-spacing">
-  <!-- ⭐ BACKGROUND NAVBAR: bg-yellow-800 (kuning gelap) -->
-  <!-- ⭐ BORDER NAVBAR: border-yellow-700 -->
+  <!-- BACKGROUND NAVBAR -->
+  <!-- BORDER NAVBAR -->
   
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <div class="flex items-center flex-shrink-0">
-        <!-- ⭐ WARNA TEKS BRAND dengan font weight 700 (Bold) dan spacing yang tepat -->
+        <!-- WARNA TEKS BRAND -->
         <h1 class="text-lg sm:text-xl font-bold text-white tracking-tight brand-text">
-          <!-- ⭐ WARNA KUNING BRAND: text-yellow-300 dengan font weight 800 (Extra Bold) -->
+          <!-- WARNA KUNING BRAND -->
           <span class="text-yellow-300 font-extrabold">Toko Bola</span> 
           <span class="ml-1">Hafiz</span>
         </h1>
@@ -37,7 +37,7 @@
       
       <!-- Desktop Navigation -->
       <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
-        <!-- ⭐ WARNA LINK MENU dengan font weight 500 (Medium) dan spacing yang baik -->
+        <!-- WARNA LINK MENU -->
         <a href="/" class="text-white hover:text-yellow-200 font-medium transition-colors duration-200 tracking-wide text-sm whitespace-nowrap">
           Home
         </a>
@@ -68,21 +68,21 @@
       <div class="hidden lg:flex items-center space-x-4 xl:space-x-6 flex-shrink-0">
         {% if user.is_authenticated %}
           <div class="text-right min-w-0">
-            <!-- ⭐ WARNA TEKS USERNAME dengan font weight 600 (Semi Bold) -->
+            <!-- WARNA TEKS USERNAME -->
             <div class="text-sm font-semibold text-white tracking-wide truncate max-w-32 xl:max-w-none">{{ name|default:user.username }}</div>
-            <!-- ⭐ WARNA TEKS INFO dengan font weight 400 (Regular) -->
+            <!-- WARNA TEKS INFO -->
             <div class="text-xs text-yellow-200 font-normal tracking-wider truncate max-w-32 xl:max-w-none">{{ npm|default:"Student" }} - {{ class|default:"Class" }}</div>
           </div>
-          <!-- ⭐ WARNA LINK LOGOUT dengan font weight 500 (Medium) -->
+          <!-- WARNA LINK LOGOUT -->
           <a href="{% url 'main:logout' %}" class="text-red-300 hover:text-red-100 font-medium transition-colors duration-200 tracking-wide text-sm whitespace-nowrap">
             Logout
           </a>
         {% else %}
-          <!-- ⭐ WARNA LINK LOGIN dengan font weight 500 (Medium) -->
+          <!-- WARNA LINK LOGIN -->
           <a href="{% url 'main:login' %}" class="text-white hover:text-yellow-200 font-medium transition-colors duration-200 tracking-wide text-sm whitespace-nowrap">
             Login
           </a>
-          <!-- ⭐ TOMBOL REGISTER dengan font weight 600 (Semi Bold) -->
+          <!-- TOMBOL REGISTER -->
           <a href="{% url 'main:register' %}" class="bg-yellow-600 hover:bg-yellow-500 text-white px-3 py-2 rounded font-semibold transition-colors duration-200 tracking-wide text-sm whitespace-nowrap">
             Register
           </a>
@@ -91,11 +91,11 @@
       
       <!-- Mobile Menu Button -->
       <div class="lg:hidden flex items-center">
-        <!-- ⭐ WARNA TOMBOL MOBILE: text-white (normal) dan hover:text-yellow-200 (hover) -->
+        <!-- WARNA TOMBOL MOBILE -->
         <button class="mobile-menu-button p-2 text-white hover:text-yellow-200 transition-colors duration-200">
           <span class="sr-only">Open menu</span>
           <div class="w-6 h-6 flex flex-col justify-center items-center">
-            <!-- ⭐ WARNA GARIS HAMBURGER: bg-current (mengikuti warna teks) -->
+            <!-- WARNA GARIS HAMBURGER (mengikuti warna teks) -->
             <span class="bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm"></span>
             <span class="bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5"></span>
             <span class="bg-current block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm"></span>
@@ -106,13 +106,13 @@
   </div>
 
   <!-- Mobile Menu -->
-  <!-- ⭐ BACKGROUND MOBILE MENU: bg-yellow-800 -->
-  <!-- ⭐ BORDER MOBILE MENU: border-yellow-700 -->
+  <!-- BACKGROUND MOBILE MENU -->
+  <!-- BORDER MOBILE MENU -->
   <div class="mobile-menu hidden lg:hidden bg-yellow-800 border-t border-yellow-700">
     <div class="px-4 sm:px-6 py-4 space-y-4">
       <!-- Mobile Navigation Links -->
       <div class="space-y-1">
-        <!-- ⭐ WARNA LINK MOBILE dengan font weight 500 (Medium) -->
+        <!-- WARNA LINK MOBILE -->
         <a href="/" class="block text-white hover:text-yellow-200 font-medium py-3 transition-colors duration-200 tracking-wide text-base">
           Home
         </a>
@@ -140,26 +140,23 @@
       </div>
       
       <!-- Mobile User Section -->
-      <!-- ⭐ BORDER SECTION: border-yellow-700 -->
       <div class="border-t border-yellow-700 pt-4">
         {% if user.is_authenticated %}
           <div class="mb-4">
-            <!-- ⭐ WARNA TEKS USERNAME MOBILE dengan font weight 600 (Semi Bold) -->
             <div class="font-semibold text-white tracking-wide text-base">{{ name|default:user.username }}</div>
-            <!-- ⭐ WARNA TEKS INFO MOBILE dengan font weight 400 (Regular) -->
             <div class="text-sm text-yellow-200 font-normal tracking-wider mt-1">{{ npm|default:"Student" }} - {{ class|default:"Class" }}</div>
           </div>
-          <!-- ⭐ WARNA LINK LOGOUT MOBILE dengan font weight 500 (Medium) -->
+          <!--  WARNA LINK LOGOUT MOBILE -->
           <a href="{% url 'main:logout' %}" class="block text-red-300 hover:text-red-100 font-medium py-3 transition-colors duration-200 tracking-wide text-base">
             Logout
           </a>
         {% else %}
           <div class="space-y-3">
-            <!-- ⭐ WARNA LINK LOGIN MOBILE dengan font weight 500 (Medium) -->
+            <!-- WARNA LINK LOGIN MOBILE -->
             <a href="{% url 'main:login' %}" class="block text-white hover:text-yellow-200 font-medium py-3 transition-colors duration-200 tracking-wide text-base">
               Login
             </a>
-            <!-- ⭐ TOMBOL REGISTER MOBILE dengan font weight 600 (Semi Bold) -->
+            <!-- TOMBOL REGISTER MOBILE -->
             <a href="{% url 'main:register' %}" class="block bg-yellow-600 hover:bg-yellow-500 text-white font-semibold py-3 px-4 rounded text-center transition-colors duration-200 tracking-wide text-base">
               Register
             </a>
