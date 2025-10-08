@@ -4,11 +4,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% block meta %} {% endblock meta %}
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{% static 'css/global.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
   </head>
   <body>
-    {% block content %} {% endblock content %}
+    {% block content %}{% endblock content %}
+
+    {% include 'toast.html' %}
+    {% include 'modal.html' %}
+
+    <!-- Pastikan toast.js dimuat lebih awal -->
+    <script src="{% static 'js/toast.js' %}"></script>
+
+    <!-- === Script untuk menampilkan Django messages === -->
+    {% if messages %}
+    <script>
+      window.addEventListener("load", function () {
+        {% for message in messages %}
+          showToast(
+            "",  // Judul dikosongkan
+            "{{ message|escapejs }}",
+            "{% if 'error' in message.tags %}error{% elif 'success' in message.tags %}success{% else %}normal{% endif %}",
+            4000
+          );
+        {% endfor %}  
+      });
+    </script>
+    {% endif %}
   </body>
 </html>

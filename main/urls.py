@@ -6,6 +6,7 @@ from main.views import logout_user
 from django.contrib.auth.decorators import login_required
 from main.views import edit_product
 from main.views import delete_product
+from main.views import add_product_ajax
 app_name = "main"
 
 # menambahkan path url
@@ -22,4 +23,5 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('product/<uuid:id>/edit', edit_product, name='edit_product'),
     path('product/<uuid:id>/delete', delete_product, name='delete_product'),
+    path('product/add/ajax/', add_product_ajax, name='add_product_ajax'),
 ]
